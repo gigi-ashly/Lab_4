@@ -24,7 +24,63 @@ public class Labprogra3 {
             lea.nextLine();
 
             switch (opcion) {
-                
+                case 1 -> {
+
+                    System.out.print("Ingrese una frase: ");
+                    String frase = lea.nextLine();
+
+                    System.out.print("Ingrese el numero de desplazamiento: ");
+                    int desplazamiento = lea.nextInt();
+
+                    String resultado = "";
+
+                    for (int i = 0; i < frase.length(); i++) {
+                        char c = frase.charAt(i);
+
+                        if (c >= 'A' && c <= 'Z') {
+                            char nueva = (char) ((c - 'A' + desplazamiento) % 26 + 'A');
+                            resultado += nueva;
+                        } else if (c >= 'a' && c <= 'z') {
+                            char nueva = (char) ((c - 'a' + desplazamiento) % 26 + 'a');
+                            resultado += nueva;
+                        } else {
+                            resultado += c;
+                        }
+
+                    }
+                    System.out.println("Frase cifrada: " + resultado);
+                    break;
+                }
+
+                case 2 -> {
+                    System.out.print("Ingrese una frase: ");
+                    String frase2 = lea.nextLine();
+                    frase2 = frase2.toLowerCase();
+
+                    System.out.print("Ingresar numero entero de longitud minima posible: ");
+                    int longitudmin = lea.nextInt();
+                    lea.nextLine();
+                    frase2 += " ";
+
+                    String cadapalabra = "";
+                    System.out.println("Palabras con mas de " + longitudmin + " caracteres:");
+                    int i = 0;
+                    int longitudFrase = frase2.length();
+                    while (i < longitudFrase) {
+                        char c = frase2.charAt(i);
+
+                        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == 'ñ' || c == 'Ñ') {
+                            cadapalabra += c;
+                        } else if (c == ' ' && cadapalabra.length() > 0) {
+                            if (cadapalabra.length() > longitudmin) {
+                                System.out.println(cadapalabra);
+                            }
+                            cadapalabra = "";
+                        }
+                        i++;
+                    }
+                    break;
+                }
                 case 3 -> {
                     boolean salir = false;
 
